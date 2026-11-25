@@ -9,6 +9,9 @@ create table if not exists public.finance_states (
 
 alter table public.finance_states enable row level security;
 
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on public.finance_states to authenticated;
+
 drop policy if exists "Usuário lê apenas seus dados" on public.finance_states;
 create policy "Usuário lê apenas seus dados"
 on public.finance_states for select
